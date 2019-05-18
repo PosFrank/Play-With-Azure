@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 	"regexp"
 )
 
@@ -16,12 +18,19 @@ type Page struct {
 
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
+var dataFolderName = "data"
 
 func main() {
+	preEnvSetting()
 	http.HandleFunc("/view/", makeHandler(viewHandler))
 	http.HandleFunc("/edit/", makeHandler(editHandler))
 	http.HandleFunc("/save/", makeHandler(saveHandler))
 	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+func preEnvSetting() {
+	dataFolderPath := getFolderPath(dataFolderName)
+	createDirectoryIfNotExist(dataFolderPath)
 }
 
 func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {
@@ -68,14 +77,12 @@ func renderTemplate(w http.ResponseWriter, templateName string, p *Page) {
 }
 
 func loadPage(title string) (*Page, error) {
-	filename := title + ".txt"
-	body, err := ioutil.ReadFile(filename)
+	body, err := ioutil.ReadFile(getFilePath(title))
 	return &Page{Title: title, Body: body}, err
 }
 
 func (p *Page) savePage() error {
-	filename := p.Title + ".txt"
-	return ioutil.WriteFile(filename, p.Body, 0600)
+	return ioutil.WriteFile(getFilePath(p.Title), p.Body, 0600)
 }
 
 func getTitle(w http.ResponseWriter, r *http.Request) (string, error) {
@@ -85,4 +92,19 @@ func getTitle(w http.ResponseWriter, r *http.Request) (string, error) {
 		return "", errors.New("Invalid Page Title")
 	}
 	return m[2], nil // The title is the second subexpression.
+}
+
+func getFilePath(fileName string) string {
+	return getFolderPath(dataFolderName) + "/" + fileName + ".txt"
+}
+
+func getFolderPath(folder string) string {
+	folderPath, _ := filepath.Abs("./" + folder)
+	return folderPath
+}
+
+func createDirectoryIfNotExist(path string) {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		os.Mkdir(path, os.ModePerm)
+	}
 }

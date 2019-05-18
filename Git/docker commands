@@ -1,0 +1,8 @@
+// build the file
+docker build -t wikiserver .
+
+// run the docker image
+docker run -d -p 8080:8080 wikiserver
+
+// get docker container bash
+docker exec -it containerId /bin/bash
