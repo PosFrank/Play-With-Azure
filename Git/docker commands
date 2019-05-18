@@ -6,3 +6,12 @@ docker run -d -p 8080:8080 wikiserver
 
 // get docker container bash
 docker exec -it containerId /bin/bash
+
+// must tag this to push it to ACR
+docker tag hello-world <acrLoginServer>/hello-world:v1
+
+//docker login 
+az login
+az acr login --name myregistry
+// Use service princial and password
+docker login myregistry.azurecr.io
