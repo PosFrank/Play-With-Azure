@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f87b869-388c-4871-9778-507445e1b64d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CMD/go commands" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AKS/server/wikiserver.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CMD/docker commands" beforeDir="false" afterPath="$PROJECT_DIR$/CMD/docker commands" afterDir="false" />
     </list>
+    <ignored path=".idea/vcs.xml" />
+    <ignored path=".idea/misc.xml" />
+    <ignored path=".idea/modules.xml" />
+    <ignored path=".idea/Play-With-Azure.iml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +151,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="2" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
@@ -157,7 +160,7 @@
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32891566" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28674698" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.6240964" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -212,6 +215,9 @@
           <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/CMD/docker commands">
       <provider selected="true" editor-type-id="text-editor">
