@@ -1,6 +1,9 @@
 // build the file
 docker build -t wikiserver .
 
+// build docker image without large dependencies
+docker build -t wikiserver -f small.Dockerfile .
+
 // run the docker image
 docker run -d -p 8080:8080 wikiserver
 
@@ -15,3 +18,7 @@ az login
 az acr login --name myregistry
 // Use service princial and password
 docker login myregistry.azurecr.io
+
+kill all running containers with docker kill $(docker ps -q)
+delete all stopped containers with docker rm $(docker ps -a -q)
+delete all images with docker rmi $(docker images -q)
